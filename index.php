@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Il mio primo tema WordPress</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="site">
-
-        <header id="masthead" class="site-header" role="banner">
-            <div class="site-branding">
-                <h1 class="site-title"><a href="#">Benvenuto nel tuo primo tema WordPress</a></h1>
-                <p class="site-description">Inserisci il motto del tuo nuovo tema</p>
-            </div><!-- .site-branding -->
-
-            <nav id="site-navigation" class="main-navigation" role="navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu Principale</button>
-                <ul id="primary-menu">
-                    <li>Link1</li>
-                    <li>Link2</li>
-                    <li>Link3</li>
-                    <li>Link4</li>
-                </ul>
-            </nav><!-- #site-navigation -->
-    	</header><!-- #masthead -->
-
-        <div id="content" class="site-content">
+<?php get_header(); ?>
             <div id="primary" class="content-area">
                 <main id="main" class="site-main" role="main">
                     <article id="post-1" class="entry">
