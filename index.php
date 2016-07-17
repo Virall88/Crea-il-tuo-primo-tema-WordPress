@@ -29,11 +29,7 @@
                     </article>
                 </main>
             </div><!-- #primary -->
-            <aside id="secondary" class="widget-area" role="complementary">
-                <div class="widget"></div>
-                <div class="widget"></div>
-                <div class="widget"></div>
-            </aside><!-- #secondary -->
+            <?php get_sidebar(); ?>
         </div><!-- #content -->
 
         <footer id="colophon" class="site-footer" role="contentinfo">
