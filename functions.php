@@ -11,6 +11,9 @@ if( !function_exists( 'skam_setup') ){
         //Mostro il link del feed all'interno di <head>
         add_theme_support( 'automatic-feed-links' );
 
+        //Aggiungo il supporto alle immagini in evidenza
+        add_theme_support( 'post-thumbnails' );
+
         //Aggiungo il supporto al caricamento del logo con misure standard
         add_theme_support('custom-logo', array(
             'width' => 300,
@@ -37,45 +40,30 @@ function skam_widgets_init() {
   		'after_title'   => '</h2>',
   	) );
 
-    register_sidebar( array(
-        'name'          => __( 'Colonna Footer 1', 'skam' ),
-        'id'            => 'footer-1',
-        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
+    if( get_theme_mod('col_footer') == 1 ){
 
-    register_sidebar( array(
-        'name'          => __( 'Colonna Footer 2', 'skam' ),
-        'id'            => 'footer-2',
-        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
+        register_sidebar( array(
+            'name'          => __( 'Colonna Footer', 'skam' ),
+            'id'            => 'footer-1',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>'
+        ));
 
-    register_sidebar( array(
-        'name'          => __( 'Colonna Footer 3', 'skam' ),
-        'id'            => 'footer-3',
-        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
+    } else {
 
-    register_sidebar( array(
-        'name'          => __( 'Colonna Footer 4', 'skam' ),
-        'id'            => 'footer-4',
-        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
+        $args = array(
+            'name' => __( 'Footer %d', 'skam'),
+            'id' => "footer",
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>'
+        );
+        register_sidebars( get_theme_mod( 'col_footer' ), $args );
+
+    }
 }
 add_action( 'widgets_init', 'skam_widgets_init' );
 
@@ -111,3 +99,15 @@ function skam_impostazioni( $wp_customize ) {
      ));
 }
 add_action( 'customize_register', 'skam_impostazioni' );
+
+//*Imposto la grandezza del contenitore
+if ( ! isset( $content_width ) ) {
+	$content_width = 900;
+}
+
+//* Aggiungo il contenitore elastico per i video
+function skam_oembed_filter($html, $url, $attr, $post_ID) {
+    $return = '<div class="embed-container">' . $html . '</div>';
+    return $return;
+}
+add_filter( 'embed_oembed_html', 'skam_oembed_filter', 10, 4 );
