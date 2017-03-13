@@ -41,6 +41,9 @@ if( !function_exists( 'skam_setup') ){
 }
 add_action( 'after_setup_theme', 'skam_setup' );
 
+// Aggiungo la dimensione immagine per lo slider
+add_image_size( 'slider', 1000, 200, true );
+
 // Aggiungo la possibilita' di modificare il colore di sfondo
 $bg_args = array(
     'default-color' => 'ffffff',
@@ -83,6 +86,16 @@ function skam_widgets_init() {
         register_sidebars( get_theme_mod( 'col_footer' ), $args );
 
     }
+
+    register_sidebar( array(
+        'name'          => __( 'Homepage Value Proposition', 'skam' ),
+        'id'            => 'home-value',
+        'description'   => __( 'All\'interno di questo contenitore puoi inserire tutte le widget testo che desideri per specificare la tua value proposition.', 'skam' ),
+        'before_widget' => '<div id="%1$s" class="single-prop %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="prop-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'skam_widgets_init' );
 
@@ -92,6 +105,13 @@ function skam_scripts() {
     // Carico il file per l'annidamento dei commenti
     if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') )
         wp_enqueue_script( 'comment-reply' );
+    }
+
+    // Carico i file dedicati alla homepage
+    if( is_home() ){
+        wp_enqueue_style( 'slick-style', get_template_directory_uri() . '/css/slick.css' );
+        wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '', true );
+        wp_enqueue_script( 'slick-custom-js', get_template_directory_uri() . '/js/skam-slick.js', array( 'jquery', 'slick-js' ), '', true );
     }
 }
 add_action( 'wp_enqueue_scripts', 'skam_scripts' );

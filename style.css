@@ -19,6 +19,8 @@ Tags: right-sidebar, custom-header, custom-menu, featured-images, post-formats
 	2# Header
 	3# Content
 	4# Footer
+	5# Slider
+	6# Home
 	# Responsive
 ------------------------ */
 
@@ -321,6 +323,39 @@ th {
 
 .site-footer section{
 	flex: 1 1 25%;
+}
+
+/*-------------------------
+	5# Slider
+-------------------------*/
+.slider{
+	width: 100%;
+	max-width: 1200px;
+	height: 200px;
+}
+.slick-list, .slick-track { height: 100%; }
+.slide{
+  height: 100%;
+  width: 100%;
+  background-size: cover !important;
+}
+
+.slide h2{
+	background-color: #fff;
+	padding: 10px 20px;
+	text-align: center;
+}
+
+/*-------------------------
+	6# Home
+-------------------------*/
+.home .flex{
+	display: flex;
+	flex-wrap: wrap;
+}
+.home .flex div{
+	flex: 1 1 250px;
+	margin: 0 20px;
 }
 
 /* ------------------------
