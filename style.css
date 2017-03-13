@@ -21,6 +21,7 @@ Tags: right-sidebar, custom-header, custom-menu, featured-images, post-formats
 	4# Footer
 	5# Slider
 	6# Home
+	7# Ricerca
 	# Responsive
 ------------------------ */
 
@@ -358,6 +359,12 @@ th {
 	margin: 0 20px;
 }
 
+/*-------------------------
+	7# Ricerca
+-------------------------*/
+mark.search-highlight{
+    background-color: #FFFF00;
+}
 /* ------------------------
     # Responsive
 ------------------------ */

@@ -177,3 +177,20 @@ if(!is_admin()){
 	add_action('wp_footer', 'wp_enqueue_scripts', 5);
 	add_action('wp_footer', 'wp_print_head_scripts', 5);
 }
+
+// Aggiungo funzioni dedicate per mettere in risalto i termini cercati
+function search_title_highlight() {
+    $title = get_the_title();
+    $keys = implode('|', explode(' ', get_search_query()));
+    $title = preg_replace('/(' . $keys .')/iu', '<mark class="search-highlight">\0</mark>', $title);
+
+    echo $title;
+}
+
+function search_excerpt_highlight() {
+    $excerpt = get_the_excerpt();
+    $keys = implode('|', explode(' ', get_search_query()));
+    $excerpt = preg_replace('/(' . $keys .')/iu', '<mark class="search-highlight">\0</mark>', $excerpt);
+
+    echo '<p>' . $excerpt . '</p>';
+}
