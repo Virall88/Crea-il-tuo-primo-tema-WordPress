@@ -29,16 +29,7 @@
                     </article>
                 </main>
             </div><!-- #primary -->
-            <?php get_sidebar(); ?>
-        </div><!-- #content -->
-
-        <footer id="colophon" class="site-footer" role="contentinfo">
-            <div class="site-info">
-
-            </div>
-        </footer>
-    </div><!-- .site -->
-
-
-</body>
-</html>
+            <?php
+                get_sidebar();
+                get_footer();
+            ?>

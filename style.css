@@ -18,6 +18,7 @@ Tags: right-sidebar, custom-header, custom-menu, featured-images, post-formats
 	1# Accessibilita
 	2# Header
 	3# Content
+	4# Footer
 	# Responsive
 ------------------------ */
 
@@ -290,6 +291,22 @@ th {
 .site-content{
 	margin: 0 5%;
 }
+
+/*-------------------------
+	4# Footer
+-------------------------*/
+.site-footer{
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #333;
+	color: #eee;
+	padding: 10px 5%;
+}
+
+.site-footer section{
+	flex: 1 1 25%;
+}
+
 /* ------------------------
     # Responsive
 ------------------------ */
@@ -301,7 +318,7 @@ th {
 		align-items: center;
 		padding: 0 5%;
 	}
-	
+
 	.menu-toggle {
 		display: none;
 	}
