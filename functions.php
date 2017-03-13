@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 if( !function_exists( 'skam_setup') ){
     function skam_setup(){
@@ -33,6 +36,46 @@ function skam_widgets_init() {
   		'before_title'  => '<h2 class="widget-title">',
   		'after_title'   => '</h2>',
   	) );
+
+    register_sidebar( array(
+        'name'          => __( 'Colonna Footer 1', 'skam' ),
+        'id'            => 'footer-1',
+        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Colonna Footer 2', 'skam' ),
+        'id'            => 'footer-2',
+        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Colonna Footer 3', 'skam' ),
+        'id'            => 'footer-3',
+        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Colonna Footer 4', 'skam' ),
+        'id'            => 'footer-4',
+        'description'   => __( 'Aggiungi le widget da mostrare nel footer del tema. Il numero di colonne verrà modificato in base al numero delle widget.', 'skam' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'skam_widgets_init' );
 
