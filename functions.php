@@ -25,9 +25,28 @@ if( !function_exists( 'skam_setup') ){
         register_nav_menus( array(
         	'primary' => __( 'Principale', 'skam' ),
         ) );
+
+        // Aggiungo la cartella per leggere le traduzioni del tema
+        load_theme_textdomain( 'skam', get_template_directory() . '/languages' );
+
+        // Aggiungo il supporto agli elementi HTML5
+        add_theme_support( 'html5', array(
+        	'search-form',
+        	'comment-form',
+        	'comment-list',
+        	'gallery',
+        	'caption',
+        ) );
     }
 }
 add_action( 'after_setup_theme', 'skam_setup' );
+
+// Aggiungo la possibilita' di modificare il colore di sfondo
+$bg_args = array(
+    'default-color' => 'ffffff',
+    'default-image' => '',
+);
+add_theme_support( 'custom-background', $bg_args );
 
 function skam_widgets_init() {
   	register_sidebar( array(
@@ -69,6 +88,11 @@ add_action( 'widgets_init', 'skam_widgets_init' );
 
 function skam_scripts() {
     wp_enqueue_style( 'skam-style', get_stylesheet_uri() );
+
+    // Carico il file per l'annidamento dei commenti
+    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') )
+        wp_enqueue_script( 'comment-reply' );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'skam_scripts' );
 
@@ -111,3 +135,50 @@ function skam_oembed_filter($html, $url, $attr, $post_ID) {
     return $return;
 }
 add_filter( 'embed_oembed_html', 'skam_oembed_filter', 10, 4 );
+
+// Modifico la schermata di login
+function skam_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: none;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'skam_login_logo' );
+
+function skam_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'skam_login_logo_url' );
+
+function skam_login_logo_url_title() {
+    return 'skillsAndMore - Dove crescono gli sviluppatori del domani';
+}
+add_filter( 'login_headertitle', 'skam_login_logo_url_title' );
+
+function skam_no_errors_login(){
+  return 'Sbagliato. Tenta di nuovo o contattami via mail.';
+}
+add_filter( 'login_errors', 'skam_no_errors_login' );
+
+// Rimuovo le informazioni extra presenti nel codice WordPress
+function skam_remove_head_extra(){
+	remove_action('wp_head', 'rsd_link'); //Se non usi un client
+	remove_action('wp_head', 'wlwmanifest_link'); //Windows Live Writer
+	remove_action('wp_head', 'wp_generator'); //Rimuovo versione WP
+	remove_action('wp_head', 'wp_shortlink_wp_head'); //Rimuovo gli shortlink dal <head>
+	remove_action('wp_head', 'feed_links_extra', 3); //Rimuovo i link a feed come le categorie
+	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); //Rimuovo i link ai post vicini
+}
+add_action('init', 'skam_remove_head_extra');
+
+// Sposto gli script alla chiusura del <body>
+if(!is_admin()){
+	remove_action('wp_head', 'wp_print_scripts');
+	remove_action('wp_head', 'wp_print_head_scripts', 9);
+	remove_action('wp_head', 'wp_enqueue_scripts', 1);
+
+	add_action('wp_footer', 'wp_print_scripts', 5);
+	add_action('wp_footer', 'wp_enqueue_scripts', 5);
+	add_action('wp_footer', 'wp_print_head_scripts', 5);
+}
