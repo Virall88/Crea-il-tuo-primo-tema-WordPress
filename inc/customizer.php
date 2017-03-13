@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Questo file contiene tutte le modifiche applicate per il corretto funzionamento del Customizer
- */
+* Questo file contiene tutte le modifiche applicate per il corretto funzionamento del Customizer
+*/
 
 function skam_impostazioni( $wp_customize ) {
 
@@ -27,6 +27,40 @@ function skam_impostazioni( $wp_customize ) {
             '3' => 3,
             '4' => 4
         ),
-     ));
+    ));
+
+    $wp_customize->add_setting(
+        'testo_copyright',
+        array(
+            'default' => 2016,
+        )
+    );
+
+    $wp_customize->add_control(
+        'testo_copyright',
+        array(
+            'label' => __( 'Anno Copyright', 'skam' ),
+            'section' => 'theme_tools',
+            'type' => 'number',
+            )
+    );
+
+    $wp_customize->add_setting(
+        'colore_copyright',
+        array(
+           'default' => '#fff',
+        )
+    );
+
+    $wp_customize->add_control(
+         'colore_copyright',
+         array(
+             'label' => __( 'Colore Copyright', 'skam' ),
+             'section' => 'theme_tools',
+             'type' => 'text',
+         )
+    );
+
+
 }
 add_action( 'customize_register', 'skam_impostazioni' );

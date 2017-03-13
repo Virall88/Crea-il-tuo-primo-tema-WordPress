@@ -119,6 +119,18 @@ add_action( 'wp_enqueue_scripts', 'skam_scripts' );
 //* Aggiungo le impostazioni del Customizer per le widget area del footer
 require get_template_directory() . 'inc/customizer.php';
 
+//* Aggiungo stili in linea per il customizer
+function skam_aggiungi_stili(){
+    ?>
+    <style>
+        .site-info p{
+            color: <?php echo get_theme_mod( 'colore_copyright' ); ?>;
+        }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'skam_aggiungi_stili' );
+
 //*Imposto la grandezza del contenitore
 if ( ! isset( $content_width ) ) {
 	$content_width = 900;
