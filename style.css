@@ -22,6 +22,7 @@ Tags: right-sidebar, custom-header, custom-menu, featured-images, post-formats
 	5# Slider
 	6# Home
 	7# Ricerca
+	8# Griglia
 	# Responsive
 ------------------------ */
 
@@ -365,6 +366,21 @@ th {
 mark.search-highlight{
     background-color: #FFFF00;
 }
+
+/*-------------------------
+	8# Griglia
+-------------------------*/
+#primary{
+	float: left;
+	width: 69%;
+}
+
+#secondary{
+	float: left;
+	width: 30%;
+	margin-left: 1% 
+}
+
 /* ------------------------
     # Responsive
 ------------------------ */
