@@ -103,7 +103,7 @@ function skam_scripts() {
     wp_enqueue_style( 'skam-style', get_stylesheet_uri() );
 
     // Carico il file per l'annidamento dei commenti
-    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') )
+    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') ){
         wp_enqueue_script( 'comment-reply' );
     }
 
@@ -117,7 +117,7 @@ function skam_scripts() {
 add_action( 'wp_enqueue_scripts', 'skam_scripts' );
 
 //* Aggiungo le impostazioni del Customizer per le widget area del footer
-require get_template_directory() . 'inc/customizer.php';
+require get_template_directory() . '/inc/customizer.php';
 
 //* Aggiungo stili in linea per il customizer
 function skam_aggiungi_stili(){
