@@ -1,0 +1,790 @@
+/*
+Theme Name: LinkaMY
+Theme uri: http://Linkamy.it
+Author: Simone Cipolletta
+Author uri: https://Linkamy.it
+Description: tema personale
+Version: 0.1
+License: GNU General Public License v2 or later
+License uri: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: LinkaMY
+Tags: right-sidebar, custom-header, custm-menu, featured-images, post-formats
+*/
+
+/* ------------------------
+
+    TABELLA dei CONTENUTI
+
+
+
+	0# Normalize
+
+	1# Accessibilita
+
+	2# Header
+
+	3# Content
+
+	4# Footer
+
+	5# Slider
+
+	6# Home
+
+	7# Ricerca
+
+	8# Griglia
+
+	# Responsive
+
+------------------------ */
+
+
+
+/*-------------------------
+
+	0# Normalize
+
+-------------------------*/
+
+html {
+
+	font-family: sans-serif;
+
+	-webkit-text-size-adjust: 100%;
+
+	-ms-text-size-adjust:     100%;
+
+}
+
+
+
+body {
+
+	margin: 0;
+
+}
+
+
+
+article,
+
+aside,
+
+details,
+
+figcaption,
+
+figure,
+
+footer,
+
+header,
+
+main,
+
+menu,
+
+nav,
+
+section,
+
+summary {
+
+	display: block;
+
+}
+
+
+
+audio,
+
+canvas,
+
+progress,
+
+video {
+
+	display: inline-block;
+
+	vertical-align: baseline;
+
+}
+
+
+
+audio:not([controls]) {
+
+	display: none;
+
+	height: 0;
+
+}
+
+
+
+[hidden],
+
+template {
+
+	display: none;
+
+}
+
+
+
+a {
+
+	background-color: transparent;
+
+}
+
+
+
+a:active,
+
+a:hover {
+
+	outline: 0;
+
+}
+
+
+
+abbr[title] {
+
+	border-bottom: 1px dotted;
+
+}
+
+
+
+b,
+
+strong {
+
+	font-weight: bold;
+
+}
+
+
+
+dfn {
+
+	font-style: italic;
+
+}
+
+
+
+h1 {
+
+	font-size: 2em;
+
+	margin: 0.67em 0;
+
+}
+
+
+
+mark {
+
+	background: #ff0;
+
+	color: #000;
+
+}
+
+
+
+small {
+
+	font-size: 80%;
+
+}
+
+
+
+sub,
+
+sup {
+
+	font-size: 75%;
+
+	line-height: 0;
+
+	position: relative;
+
+	vertical-align: baseline;
+
+}
+
+
+
+sup {
+
+	top: -0.5em;
+
+}
+
+
+
+sub {
+
+	bottom: -0.25em;
+
+}
+
+
+
+img {
+
+	border: 0;
+
+}
+
+
+
+svg:not(:root) {
+
+	overflow: hidden;
+
+}
+
+
+
+figure {
+
+	margin: 1em 40px;
+
+}
+
+
+
+hr {
+
+	box-sizing: content-box;
+
+	height: 0;
+
+}
+
+
+
+pre {
+
+	overflow: auto;
+
+}
+
+
+
+code,
+
+kbd,
+
+pre,
+
+samp {
+
+	font-family: monospace, monospace;
+
+	font-size: 1em;
+
+}
+
+
+
+button,
+
+input,
+
+optgroup,
+
+select,
+
+textarea {
+
+	color: inherit;
+
+	font: inherit;
+
+	margin: 0;
+
+}
+
+
+
+button {
+
+	overflow: visible;
+
+}
+
+
+
+button,
+
+select {
+
+	text-transform: none;
+
+}
+
+
+
+button,
+
+html input[type="button"],
+
+input[type="reset"],
+
+input[type="submit"] {
+
+	-webkit-appearance: button;
+
+	cursor: pointer;
+
+}
+
+
+
+button[disabled],
+
+html input[disabled] {
+
+	cursor: default;
+
+}
+
+
+
+button::-moz-focus-inner,
+
+input::-moz-focus-inner {
+
+	border: 0;
+
+	padding: 0;
+
+}
+
+
+
+input {
+
+	line-height: normal;
+
+}
+
+
+
+input[type="checkbox"],
+
+input[type="radio"] {
+
+	box-sizing: border-box;
+
+	padding: 0;
+
+}
+
+
+
+input[type="number"]::-webkit-inner-spin-button,
+
+input[type="number"]::-webkit-outer-spin-button {
+
+	height: auto;
+
+}
+
+
+
+input[type="search"]::-webkit-search-cancel-button,
+
+input[type="search"]::-webkit-search-decoration {
+
+	-webkit-appearance: none;
+
+}
+
+
+
+fieldset {
+
+	border: 1px solid #c0c0c0;
+
+	margin: 0 2px;
+
+	padding: 0.35em 0.625em 0.75em;
+
+}
+
+
+
+legend {
+
+	border: 0;
+
+	padding: 0;
+
+}
+
+
+
+textarea {
+
+	overflow: auto;
+
+}
+
+
+
+optgroup {
+
+	font-weight: bold;
+
+}
+
+
+
+table {
+
+	border-collapse: collapse;
+
+	border-spacing: 0;
+
+}
+
+
+
+td,
+
+th {
+
+	padding: 0;
+
+}
+
+
+
+/* ------------------------
+
+    1# Accessibilità
+
+------------------------ */
+
+.screen-reader-text {
+
+	clip: rect(1px, 1px, 1px, 1px);
+
+	position: absolute !important;
+
+	height: 1px;
+
+	width: 1px;
+
+	overflow: hidden;
+
+}
+
+
+
+.screen-reader-text:focus {
+
+	background-color: #f1f1f1;
+
+	border-radius: 3px;
+
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+
+	clip: auto !important;
+
+	color: #21759b;
+
+	display: block;
+
+	font-size: 14px;
+
+	font-size: 0.875rem;
+
+	font-weight: bold;
+
+	height: auto;
+
+	left: 5px;
+
+	line-height: normal;
+
+	padding: 15px 23px 14px;
+
+	text-decoration: none;
+
+	top: 5px;
+
+	width: auto;
+
+	z-index: 100000; /* Above WP toolbar. */
+
+}
+
+
+
+/* ------------------------
+
+    2# Header
+
+------------------------ */
+
+.site-header{
+
+	display: block;
+
+}
+
+.site-header, .site-header a{
+
+	color: #eee;
+
+}
+
+
+
+.main-navigation{
+
+
+
+}
+
+.main-navigation ul li{
+
+	display: inline-block;
+
+	margin: 0 6px;
+
+}
+
+
+
+/*-------------------------
+
+	3# Content
+
+-------------------------*/
+
+.site-content{
+
+	margin: 0 5%;
+
+}
+
+
+
+.embed-container {
+
+    position: relative;
+
+    padding-bottom: 56.25%;
+
+    padding-top: 30px;
+
+    height: 0;
+
+    overflow: hidden;
+
+}
+
+
+
+.embed-container iframe, .embed-container object, .embed-container embed {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+/*-------------------------
+
+	4# Footer
+
+-------------------------*/
+
+.site-footer{
+
+	display: flex;
+
+	flex-wrap: wrap;
+
+	background-color: #333;
+
+	color: #eee;
+
+	padding: 10px 5%;
+
+}
+
+
+
+.site-footer section{
+
+	flex: 1 1 25%;
+
+}
+
+
+
+/*-------------------------
+
+	5# Slider
+
+-------------------------*/
+
+.slider{
+
+	width: 100%;
+
+	max-width: 1200px;
+
+	height: 200px;
+
+}
+
+.slick-list, .slick-track { height: 100%; }
+
+.slide{
+
+  height: 100%;
+
+  width: 100%;
+
+  background-size: cover !important;
+
+}
+
+
+
+.slide h2{
+
+	background-color: #fff;
+
+	padding: 10px 20px;
+
+	text-align: center;
+
+}
+
+
+
+/*-------------------------
+
+	6# Home
+
+-------------------------*/
+
+.home .flex{
+
+	display: flex;
+
+	flex-wrap: wrap;
+
+}
+
+.home .flex div{
+
+	flex: 1 1 250px;
+
+	margin: 0 20px;
+
+}
+
+
+
+/*-------------------------
+
+	7# Ricerca
+
+-------------------------*/
+
+mark.search-highlight{
+
+    background-color: #FFFF00;
+
+}
+
+
+
+/*-------------------------
+
+	8# Griglia
+
+-------------------------*/
+
+#primary{
+
+	float: left;
+
+	width: 69%;
+
+}
+
+
+
+#secondary{
+
+	float: left;
+
+	width: 30%;
+
+	margin-left: 1%
+
+}
+
+
+
+/* ------------------------
+
+    # Responsive
+
+------------------------ */
+
+@media screen and (min-width: 37.5em) {
+
+	.site-header{
+
+		background-color: #333;
+
+		display: flex;
+
+		justify-content: space-between;
+
+		align-items: center;
+
+		padding: 0 5%;
+
+	}
+
+
+
+	.menu-toggle {
+
+		display: none;
+
+	}
+
+	.main-navigation ul {
+
+		display: block;
+
+	}
+
+}
